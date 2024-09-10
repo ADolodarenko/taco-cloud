@@ -1,0 +1,18 @@
+.body {
+    color: antiquewhite;
+    background-color: #303030;
+}
+
+.grid {
+
+}
+
+.ingredient-group {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+.validationError {
+    color: indianred;
+}
+
