@@ -4,5 +4,14 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    generate-unique-name: false
-    name: tacocloud
+    url: jdbc:postgresql://localhost:5434/tacocloud
+    username: tacouser
+    password: tacouser
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 12
+      idle-timeout: 300000
+      max-lifetime: 1200000
+      auto-commit: true
+
