@@ -1,6 +1,5 @@
 package org.dav.tacocloud.domain;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -56,7 +55,7 @@ public class TacoOrder {
     @Column(name = "cc_cvv")
     private String ccCVV;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tacoOrder")
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
