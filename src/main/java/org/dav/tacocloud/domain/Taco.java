@@ -38,10 +38,6 @@ public class Taco {
     )
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "taco_order_id", insertable = true, nullable = false)
-    private TacoOrder tacoOrder;
-
     public void addIngredient(Ingredient ingredient) {
         this.ingredients.add(ingredient);
     }

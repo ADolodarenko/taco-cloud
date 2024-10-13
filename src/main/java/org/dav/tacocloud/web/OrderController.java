@@ -2,8 +2,10 @@ package org.dav.tacocloud.web;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.dav.tacocloud.domain.Taco;
 import org.dav.tacocloud.domain.TacoOrder;
 import org.dav.tacocloud.repository.OrderRepository;
+import org.dav.tacocloud.repository.TacoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
+    private TacoRepository tacoRepository;
     private OrderRepository orderRepository;
 
     @Autowired
-    public OrderController(OrderRepository orderRepository) {
+    public OrderController(TacoRepository tacoRepository, OrderRepository orderRepository) {
+        this.tacoRepository = tacoRepository;
         this.orderRepository = orderRepository;
     }
 
@@ -36,6 +40,10 @@ public class OrderController {
                                SessionStatus sessionStatus) {
         if (errors.hasErrors()) {
             return "orderForm";
+        }
+
+        for (Taco taco : order.getTacos()) {
+            tacoRepository.save(taco);
         }
 
         orderRepository.save(order);

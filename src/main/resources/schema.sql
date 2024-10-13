@@ -13,7 +13,7 @@ create table if not exists taco_order (
 create table if not exists taco (
     id bigserial not null primary key,
     "name" varchar(50) not null,
-    taco_order_id bigint not null,
+    taco_order_id bigint null,
     created_at timestamp not null);
 
 alter table taco add foreign key (taco_order_id) references taco_order(id);

@@ -1,10 +1,12 @@
 package org.dav.tacocloud.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Digits;
@@ -55,7 +57,8 @@ public class TacoOrder {
     @Column(name = "cc_cvv")
     private String ccCVV;
 
-    @OneToMany(mappedBy = "tacoOrder")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "taco_order_id")
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
