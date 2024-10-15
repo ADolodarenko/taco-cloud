@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.containsString;
 
 import org.dav.tacocloud.repository.IngredientRepository;
 import org.dav.tacocloud.repository.OrderRepository;
+import org.dav.tacocloud.repository.TacoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,6 +23,8 @@ public class HomeControllerTest {
     private IngredientRepository ingredientRepository;
     @MockBean
     private OrderRepository orderRepository;
+    @MockBean
+    private TacoRepository tacoRepository;
 
     @Test
     public void testHomePage() throws Exception {
