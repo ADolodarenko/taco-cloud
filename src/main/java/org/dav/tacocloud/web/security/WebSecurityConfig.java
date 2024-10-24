@@ -1,4 +1,4 @@
-package org.dav.tacocloud.web;
+package org.dav.tacocloud.web.security;
 
 import org.dav.tacocloud.domain.User;
 import org.dav.tacocloud.repository.UserRepository;
