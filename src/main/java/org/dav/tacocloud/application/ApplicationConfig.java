@@ -1,10 +1,13 @@
 package org.dav.tacocloud.application;
 
 import org.dav.tacocloud.domain.Ingredient;
+import org.dav.tacocloud.domain.User;
 import org.dav.tacocloud.repository.IngredientRepository;
+import org.dav.tacocloud.repository.UserRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class ApplicationConfig {
@@ -23,6 +26,21 @@ public class ApplicationConfig {
                 ingredientRepository.save(new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE));
                 ingredientRepository.save(new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE));
             }
+        };
+    }
+
+    @Bean
+    public ApplicationRunner userLoader(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        return args -> {
+            if (userRepository.count() > 0) {
+                return;
+            }
+
+            String password = passwordEncoder.encode("admin");
+
+            userRepository.save(new User("admin", password, "Администратор",
+                    null, null, null, null, null));
+
         };
     }
 }

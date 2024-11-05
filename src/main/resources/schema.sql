@@ -30,6 +30,17 @@ create table if not exists taco_ingredient (
 alter table taco_ingredient add foreign key (ingredient_id) references ingredient(id);
 alter table taco_ingredient add foreign key (taco_id) references taco(id);
 
+create table users (
+    id bigserial not null primary key,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    fullname varchar(255) null,
+    street varchar(255) null,
+    city varchar(255) null,
+    "state" varchar(255) null,
+    zip varchar(255) null,
+    phone_number varchar(255) null
+);
 
 
 

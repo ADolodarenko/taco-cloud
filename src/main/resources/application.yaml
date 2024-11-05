@@ -4,7 +4,7 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    url: jdbc:postgresql://localhost:5434/tacocloud
+    url: jdbc:postgresql://localhost:5436/tacocloud
     username: tacouser
     password: tacouser
     hikari:
